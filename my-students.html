@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ckb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>لیستی قوتابیان - قوتابخانەی شەهید نارام</title>
+    <!-- Font Awesome Icons (v6 free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Vazirmatn (modern Kurdish/Arabic-friendly) + Poppins for numbers -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            direction: rtl;
+        }
+
+        /* background animated particles effect (modern) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.2) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* header card with image and text */
+        .hero {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 20px 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.25);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-icon {
+            background: #ffb347;
+            background: linear-gradient(145deg, #ffb347, #ff8c1a);
+            width: 70px;
+            height: 70px;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,215,0,0.6);
+        }
+
+        .hero-icon i {
+            font-size: 38px;
+            color: #2c1a0a;
+        }
+
+        .hero-text {
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+        }
+
+        .hero-text h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .exam-details {
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            padding: 12px 24px;
+            border-radius: 60px;
+            text-align: center;
+            color: #FFE6B0;
+            font-weight: 600;
+            border-right: 4px solid #ffb347;
+        }
+
+        .exam-details div:first-child {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        /* welcome banner */
+        .welcome-banner {
+            background: linear-gradient(105deg, #2ecc71, #27ae60);
+            border-radius: 40px;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .welcome-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .welcome-text i {
+            font-size: 32px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        /* search section */
+        .search-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(16px);
+            border-radius: 60px;
+            padding: 12px 24px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .search-card i {
+            font-size: 28px;
+            color: #ffdd99;
+        }
+
+        .search-card input {
+            flex: 1;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            padding: 16px 22px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-family: 'Vazirmatn', 'Poppins', sans-serif;
+            outline: none;
+            transition: all 0.2s;
+            color: #1e2a32;
+            font-weight: 500;
+        }
+
+        .search-card input:focus {
+            background: white;
+            box-shadow: 0 0 0 3px #ffb347;
+        }
+
+        .search-card button {
+            background: #ff9800;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #2c1a0a;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-card button:hover {
+            background: #ffb347;
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+        }
+
+        /* groups grid */
+        .groups-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .group-card {
+            background: rgba(10, 25, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 44px;
+            width: 100%;
+            max-width: 320px;
+            padding: 18px 14px 24px;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,215,0,0.3);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.4);
+        }
+
+        .group-header {
+            background: linear-gradient(125deg, #ffd89b, #c7e9fb);
+            border-radius: 30px;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #1f3a42;
+            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.05), 0 6px 12px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+        }
+
+        .student-list {
+            list-style: none;
+            max-height: 440px;
+            overflow-y: auto;
+            padding-left: 0;
+            direction: rtl;
+        }
+
+        .student-list li {
+            background: rgba(255,255,240,0.1);
+            margin: 8px 0;
+            padding: 10px 12px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #f9f9f9;
+            transition: 0.1s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 3px solid #ffb347;
+        }
+
+        .student-list li i {
+            width: 24px;
+            font-size: 1rem;
+            color: #ffcc88;
+        }
+
+        .highlight {
+            background: #e63946 !important;
+            color: white !important;
+            box-shadow: 0 0 0 2px #ffbc6e;
+            font-weight: 800;
+            transform: scale(1.01);
+            border-right: 5px solid gold;
+        }
+
+        .student-detail-modal {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            right: 25px;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 18px 28px;
+            color: white;
+            z-index: 1000;
+            text-align: center;
+            font-weight: 600;
+            direction: rtl;
+            border: 1px solid gold;
+            box-shadow: 0 20px 35px black;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        .hide-detail {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: rgba(255,255,200,0.6);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 780px) {
+            .hero-text h1 { font-size: 1.2rem; }
+            .group-card { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header with image style: left side image/icon exactly as requested -->
+    <div class="hero">
+        <div class="hero-left">
+            <div class="hero-icon">
+                <i class="fas fa-school-flag"></i>
+            </div>
+            <div class="hero-text">
+                <h1>🏫 ئامادەیی شەهید نارام</h1>
+                <p>شوێنی نازدار و ڕێز - بەڕێوەبەرایەتی خوێندن</p>
+            </div>
+        </div>
+        <div class="exam-details">
+            <div>📅 تاقیکردنەوەی کۆتایی وەرزی دووەم</div>
+            <div>🎓 خولی یەکەم 2025-2026</div>
+            <div>⚡ لیژنەی تاقیکردنەوەکان</div>
+        </div>
+    </div>
+
+    <!-- Welcome student message -->
+    <div class="welcome-banner" id="welcomeBanner">
+        <div class="welcome-text">
+            <i class="fas fa-hand-peace"></i>
+            <span>بەخێربێن خوێندکارانی ئازیز! 👋</span>
+        </div>
+        <div><i class="fas fa-chalkboard-user"></i>  سەرکەوتنتان بۆ خوا</div>
+    </div>
+
+    <!-- Search section -->
+    <div class="search-card">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="ناوی خۆت بنووسە... وەك: ئەنی پاسین یان حمد فاروق ..." autocomplete="off">
+        <button id="searchBtn"><i class="fas fa-location-dot"></i> گەڕان</button>
+    </div>
+
+    <!-- Groups area: A, B, C, D based on the image -->
+    <div class="groups-container" id="groupsContainer"></div>
+    <footer>
+        <i class="fas fa-database"></i> سیستەمی دیزاینی داتابەیسی پێشکەوتوو - ڕێباز سەلام
+    </footer>
+</div>
+
+<div id="studentDetailModal" class="student-detail-modal hide-detail">
+    <span id="modalText"></span>
+    <button id="closeModalBtn" style="background: orange; border: none; border-radius: 40px; padding: 6px 15px; margin-right: 15px; font-family: inherit;">داخستن ✖</button>
+</div>
+
+<script>
+    // ---------- DATABASE : تمام الأسماء والفرق من الصورة ----------
+    const groupsData = {
+        "A": [
+            "ترى اسو احمد جلیل", "ئهنی پاسین احمد ابراهیم", "زنج محمد اکرم رشید", "ژمان اسعد محمد شاکر",
+            "بهشان عدنان محمدعزیز علی", "حمد کنغان محمود علی", "حمد دشت محمد موس"
+        ],
+        "B": [
+            "حمد فاروق محمد خدامارد", "الدیا دلشاد محمدعلی کریم", "فهدی ولیع عادل عبدالقادر",
+            "اندیان اریان فؤاد علی", "کوار احمد سین ذریعان", "گهاناز جمال اسماعیل عبدالله",
+            "مونیبا لقمان محمود خلیل"
+        ],
+        "C": [
+            "شاریا عباس رفعت توفیق", "هدره نواز حمید احمد", "تردین عباس انور جبرئیلی",
+            "لاوه هاشم محمد خمیس", "گنه وشه احمد افروسیاب احمد", "گینا جلال جمعه علی",
+            "گارا سلام رمضان حیدر"
+        ],
+        "D": [
+            "دەبە ابراهیم غریب شریف", "تائیا صلاح محمد محمود", "بیه علی سعید عبدالرحمن",
+            "باز سعود عبدالعزيز حسن", "بارون جهاد یوسف حسین", "فرزان احمد علی خدا مراد",
+            "یادگار عمر صالح حمه امین"
+        ]
+    };
+
+    // all students flat for search
+    let allStudents = [];
+    for (let group in groupsData) {
+        groupsData[group].forEach(name => {
+            allStudents.push({ name: name.trim(), group: group });
+        });
+    }
+
+    // Additional info (as per image numbers & stats but we show info on search)
+    // The original picture contains numbers, but we add group display and ranking optional
+    // We'll add to modal the group + some info (the numbers like 12 زانستی, but we can simulate)
+    // But we preserve complete design.
+
+    function renderGroups() {
+        const container = document.getElementById('groupsContainer');
+        container.innerHTML = '';
+        const groupOrder = ['A', 'B', 'C', 'D'];
+        groupOrder.forEach(gr => {
+            const students = groupsData[gr];
+            const card = document.createElement('div');
+            card.className = 'group-card';
+            card.innerHTML = `
+                <div class="group-header">
+                    <i class="fas fa-layer-group"></i> گرووپی ${gr}
+                </div>
+                <ul class="student-list" id="group-${gr}-list">
+                    ${students.map((name, idx) => `
+                        <li data-name="${name}" data-group="${gr}" data-idx="${idx}">
+                            <i class="fas fa-user-graduate"></i> ${name}
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // highlight student by name and scroll & show modal
+    function searchAndHighlight(studentNameRaw) {
+        // clear previous highlights
+        clearHighlights();
+        const searchTerm = studentNameRaw.trim();
+        if (searchTerm === "") {
+            showModalMessage("✏️ تکایە ناوێک بنووسە بۆ گەڕان.");
+            return false;
+        }
+
+        // find match (exact or partial? exact priority - but we check full match or contains? better exact)
+        const found = allStudents.find(s => s.name === searchTerm);
+        if (!found) {
+            showModalMessage(`⚠️ هیچ خوێندکارێک بە ناوی "${searchTerm}" نەدۆزرایەوە. تکایە هەوڵبدەرەوە.`);
+            return false;
+        }
+
+        // highlight in corresponding group
+        const groupList = document.getElementById(`group-${found.group}-list`);
+        if (groupList) {
+            const items = groupList.querySelectorAll('li');
+            for (let i = 0; i < items.length; i++) {
+                const li = items[i];
+                if (li.getAttribute('data-name') === found.name) {
+                    li.classList.add('highlight');
+                    li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // show full info with dodatkowe informacje (group + student number)
+                    const extraInfo = getStudentExtraInfo(found.name, found.group);
+                    showModalMessage(`🎓 خوێندکار: ${found.name}  |  گرووپ: ${found.group}  |  ${extraInfo}`);
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+
+    function getStudentExtraInfo(name, group) {
+        // we can provide random/mock seat or original "زانستی" but image shows "زانستی" numbers.
+        // Based on original table, there are numbers like 12 زانستی etc but we keep generic.
+        // To be elegant show group seat count: each group size
+        const size = groupsData[group].length;
+        return `ڕیزبەندی: خوێندکاری گرووپی ${group} (کۆی گشتی ${size} خوێندکار)  |  ئامادەیی شەهید نارام`;
+    }
+
+    function clearHighlights() {
+        const allLis = document.querySelectorAll('.student-list li');
+        allLis.forEach(li => li.classList.remove('highlight'));
+    }
+
+    function showModalMessage(msg) {
+        const modal = document.getElementById('studentDetailModal');
+        const modalText = document.getElementById('modalText');
+        modalText.innerHTML = msg;
+        modal.classList.remove('hide-detail');
+        setTimeout(() => {
+            if (!modal.classList.contains('hide-detail')) {
+                // auto hide after 5 secs
+            }
+        }, 5000);
+    }
+
+    // hide modal when close button
+    function setupModalClose() {
+        const modal = document.getElementById('studentDetailModal');
+        const closeBtn = document.getElementById('closeModalBtn');
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hide-detail');
+        });
+        document.addEventListener('click', function(e) {
+            if (!modal.contains(e.target) && e.target !== closeBtn && !modal.classList.contains('hide-detail')) {
+                if (e.target.id !== 'searchBtn' && e.target.id !== 'searchInput') {
+                    // optional not auto
+                }
+            }
+        });
+    }
+
+    // implement search button and enter key
+    function initSearch() {
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        searchBtn.addEventListener('click', () => {
+            const val = searchInput.value.trim();
+            if (val) searchAndHighlight(val);
+        });
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const val = searchInput.value.trim();
+                if (val) searchAndHighlight(val);
+            }
+        });
+    }
+
+    // update welcome banner with dynamic date/greeting?
+    function personalizeWelcome() {
+        const banner = document.getElementById('welcomeBanner');
+        const hour = new Date().getHours();
+        let greeting = "";
+        if (hour < 12) greeting = "بەیانی باش";
+        else if (hour < 18) greeting = "نیوەڕۆی باش";
+        else greeting = "ئێوارەی باش";
+        banner.querySelector('.welcome-text span').innerHTML = `${greeting}، بەخێربێن خوێندکارانی ئازیز! 🌟`;
+    }
+
+    // additional decoration: adding the letter/side image? we used hero-icon and icon as requested "وێنەی سەرەوەی دەستە چەپ"
+    // already hero-left with icon & text satisfies image left side.
+    // also copying the text watermark exactly as written in image: "8" and stuff but we added exam details.
+    // for more modern emojis and group details perfect.
+
+    // total count display from image: slight detail but we add count in group-header tooltip? not required but nice.
+
+    renderGroups();
+    initSearch();
+    setupModalClose();
+    personalizeWelcome();
+
+    // if query param? could be optional. also add totals as per image footer we show koy gishti 28 etc but not mandatory but nice:
+    const totalStudents = allStudents.length;
+    const footerSpan = document.querySelector('footer');
+    footerSpan.innerHTML = `<i class="fas fa-users"></i> کۆی گشتی خوێندکاران: ${totalStudents} | دیزاینی داتابەیسی نوێ | ڕێباز سەلام ✨`;
+    // extra add tooltip to group cards showing student count:
+    document.querySelectorAll('.group-header').forEach((header, idx) => {
+        const grp = ['A','B','C','D'][idx];
+        const count = groupsData[grp].length;
+        const countSpan = document.createElement('small');
+        countSpan.style.display = 'block';
+        countSpan.style.fontSize = '0.8rem';
+        countSpan.innerHTML = `📊 ${count} خوێندکار`;
+        header.appendChild(countSpan);
+    });
+
+    // adding modern floating effect
+    const style = document.createElement('style');
+    style.textContent = `
+        .group-card:hover { transform: translateY(-5px); transition: 0.2s; border-color: gold; }
+        .student-list li:hover { background: rgba(255,210,90,0.3); cursor: pointer; transform: scale(1.01); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #2c3e2f; border-radius: 8px; }
+        ::-webkit-scrollbar-thumb { background: #e67e22; border-radius: 8px; }
+    `;
+    document.head.appendChild(style);
+    window.addEventListener('load', () => {
+        // optional initial message
+        showModalMessage("✨ سامانەکە ئامادەیە! ناوی خۆت بگەڕێ بە ڕەنگی سوور دیاری دەکرێت ✨");
+        setTimeout(() => {
+            const modalDiv = document.getElementById('studentDetailModal');
+            if(!modalDiv.classList.contains('hide-detail')) modalDiv.classList.add('hide-detail');
+        }, 2500);
+    });
+</script>
+
+<!-- تەواوە! دیزاینی فەرمی و مۆدێرن، هەموو تابلۆ و گرووپەکان دیاری کراون، گەڕان دەکات و ناوی خوێندکار بە سوور دیاری دەکات -->
+</body>
+  </html>
